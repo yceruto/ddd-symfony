@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <table border="1">
+        <thead>
+        <tr>
+            <th>Title</th>
+            <th>Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for listing in listings %}
+            <tr>
+                <td>{{ listing.title }}</td>
+                <td>{{ listing.amount }} {{ listing.currency }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
