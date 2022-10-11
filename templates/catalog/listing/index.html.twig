@@ -12,7 +12,7 @@
         {% for listing in listings %}
             <tr>
                 <td>{{ listing.title }}</td>
-                <td>{{ listing.amount }} {{ listing.currency }}</td>
+                <td>{{ listing.price.amount }} {{ listing.price.currency.isoCode }}</td>
             </tr>
         {% endfor %}
         </tbody>

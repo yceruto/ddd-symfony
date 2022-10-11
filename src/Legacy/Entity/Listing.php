@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Legacy\Entity;
 
+use App\Shared\Domain\Money\Money;
 use Doctrine\ORM\Mapping\Column;
+use Doctrine\ORM\Mapping\Embedded;
 use Doctrine\ORM\Mapping\Entity;
 use Doctrine\ORM\Mapping\Id;
 
@@ -18,9 +20,6 @@ class Listing
     #[Column]
     public string $title;
 
-    #[Column]
-    public int $amount;
-
-    #[Column]
-    public string $currency;
+    #[Embedded]
+    public Money $price;
 }
