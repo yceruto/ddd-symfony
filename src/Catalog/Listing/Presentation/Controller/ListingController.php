@@ -2,10 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Legacy\Controller;
+namespace App\Catalog\Listing\Presentation\Controller;
 
-use App\Legacy\Entity\Listing;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Catalog\Listing\Application\Search\SearchListingUseCase;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,7 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class ListingController extends AbstractController
 {
     public function __construct(
-        private readonly EntityManagerInterface $entityManager,
+        private readonly SearchListingUseCase $searchListingUseCase,
     ) {
     }
 
@@ -21,7 +20,7 @@ class ListingController extends AbstractController
     public function index(): Response
     {
         return $this->render('catalog/listing/index.html.twig', [
-            'listings' => $this->entityManager->getRepository(Listing::class)->findAll(),
+            'listings' => $this->searchListingUseCase->search(),
         ]);
     }
 }

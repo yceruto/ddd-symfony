@@ -10,11 +10,17 @@ doctrine:
         naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
         auto_mapping: true
         mappings:
-            App\Legacy:
+#            App\Legacy:
+#                is_bundle: false
+#                dir: '%kernel.project_dir%/src/Legacy/Entity/'
+#                prefix: 'App\Legacy\Entity'
+#                alias: App\Legacy
+
+            App\Catalog\Listing:
                 is_bundle: false
-                dir: '%kernel.project_dir%/src/Legacy/Entity/'
-                prefix: 'App\Legacy\Entity'
-                alias: App\Legacy
+                dir: '%kernel.project_dir%/src/Catalog/Listing/Domain/Model/'
+                prefix: 'App\Catalog\Listing\Domain\Model'
+                alias: App\Catalog\Listing
 
             App\Shared\Money:
                 is_bundle: false
