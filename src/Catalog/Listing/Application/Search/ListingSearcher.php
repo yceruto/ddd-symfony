@@ -7,7 +7,7 @@ namespace App\Catalog\Listing\Application\Search;
 use App\Catalog\Listing\Domain\Model\Listing;
 use App\Catalog\Listing\Domain\Model\ListingRepository;
 
-class SearchListingUseCase
+class ListingSearcher
 {
     public function __construct(
         private readonly ListingRepository $repository,
@@ -17,7 +17,7 @@ class SearchListingUseCase
     /**
      * @return iterable<Listing>
      */
-    public function search(/** .... */): iterable
+    public function search(array $filter): iterable
     {
         return $this->repository->all();
     }

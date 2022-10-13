@@ -8,6 +8,7 @@ use App\Shared\Domain\Money\Money;
 use Doctrine\ORM\Mapping\Column;
 use Doctrine\ORM\Mapping\Embedded;
 use Doctrine\ORM\Mapping\Entity;
+use InvalidArgumentException;
 
 #[Entity]
 class Listing
@@ -71,7 +72,9 @@ class Listing
 
     private function setPrice(Money $price): void
     {
-        // invariance validation ...
+        if ($price->amount < 0) {
+            throw new InvalidArgumentException('Listing price cannot be less than zero');
+        }
 
         $this->price = $price;
     }
